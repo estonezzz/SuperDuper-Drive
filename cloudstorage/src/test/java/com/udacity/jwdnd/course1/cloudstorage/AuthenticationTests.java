@@ -49,11 +49,9 @@ class AuthenticationTests {
 
 
 	/** TEST 1.1:
-	 * Write a test that verifies that an unauthorized user
-	 * can only access the login and signup pages.
 	 * */
 	@Test
-	public void testUnauthorizeUser() {
+	public void testUnauthorizedUser() {
 		/*// navigate to /signup:
 		driver.get(baseURL + "/signup");
 		// initialize object for SignupPage:
@@ -80,9 +78,6 @@ class AuthenticationTests {
 	}
 
 	/** TEST 1.2:
-	 * Write a test that signs up a new user, logs in,
-	 * verifies that the home page is accessible,
-	 * logs out, and verifies that the home page is no longer accessible.
 	 * */
 	@Test
 	public void testLoginLogout() {

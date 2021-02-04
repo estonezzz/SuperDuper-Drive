@@ -7,7 +7,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class NoteView {
-    /** define fields */
+
     // logout:
     @FindBy(xpath = "//*[@id='logoutDiv']//button")
     private WebElement logoutButton;
@@ -43,16 +43,16 @@ public class NoteView {
     @FindBy(id = "note-delete-btn")
     private WebElement deleteNoteButton;
 
-    // driver:
+
     private final WebDriver driver;
 
-    // constructor:
+
     public NoteView(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
 
-    /** define methods */
+
 
     // method to simulate user to click on Notes tab:
     public void clickNoteTab() {

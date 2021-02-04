@@ -42,7 +42,7 @@ public class SignupView {
         ((JavascriptExecutor) driver).executeScript("arguments[0].value='" + username + "';", this.username);
         ((JavascriptExecutor) driver).executeScript("arguments[0].value='" + password + "';", this.password);
 
-        // hit Sign Up button:
+        // hit SignUp button:
         ((JavascriptExecutor) driver).executeScript("arguments[0].click();", this.signupButton);
     }
 }

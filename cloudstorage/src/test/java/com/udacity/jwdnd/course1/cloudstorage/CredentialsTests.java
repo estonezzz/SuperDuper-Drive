@@ -25,6 +25,8 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class CredentialsTests {
+    @LocalServerPort
+    private int port; // RANDOM_PORT, port of server
 
     // define Credential Service variable
     //  to use getCrdentialsByID and call Credentials object
@@ -54,7 +56,7 @@ public class CredentialsTests {
     // before each test, signup and login to get to homepage:
     @BeforeEach
     public void beforeEach() {
-        baseURL = "http://localhost:8080"; /*+ port;*/
+        baseURL = "http://localhost:" + port;
 
         // navigate to /signup:
         driver.get(baseURL + "/signup");
@@ -84,9 +86,6 @@ public class CredentialsTests {
 
     /**
      *  TEST 3.1:
-     *  Write a test that creates a set of credentials,
-     *  verifies that they are displayed,
-     *  and verifies that the displayed password is encrypted.
      * */
     @Test
     public void addNewCredential() {
@@ -117,7 +116,6 @@ public class CredentialsTests {
         int credentialId = Integer.parseInt( ((JavascriptExecutor) driver).executeScript(scriptHtml).toString());
         // click to close modal form
         credentialsView.clickCloseBtn();
-        System.out.println("INPUT CREDENTIAL ID: " + credentialId);
 
         //credentials returns null no matter what, can't figure out how to fix it
         Credentials credentials = credentialService.getCredentialById(credentialId);
@@ -133,9 +131,6 @@ public class CredentialsTests {
 
     /**
      * TEST 3.2:
-     *  Write a test that views an existing set of credentials,
-     *  verifies that the viewable password is unencrypted,
-     *  edits the credentials, and verifies that the changes are displayed.
      * */
     @Test
     public void editCredential() {
@@ -166,9 +161,7 @@ public class CredentialsTests {
         int credentialId = Integer.parseInt( ((JavascriptExecutor) driver).executeScript(scriptHtml).toString());
         // click to close modal form
         credentialsView.clickCloseBtn();
-        System.out.println("INPUT CREDENTIAL ID: " + credentialId);
 
-        //credentials returns null no matter what, can't figure out how to fix it
         Credentials credentials = credentialService.getCredentialById(credentialId);
 
 
@@ -182,8 +175,6 @@ public class CredentialsTests {
 
     /**
      * TEST 3.3:
-     * Write a test that deletes a note
-     * and verifies that the note is no longer displayed.
      * */
     @Test
     public void deleteCredential() {

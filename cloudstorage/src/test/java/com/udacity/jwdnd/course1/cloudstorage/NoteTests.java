@@ -20,9 +20,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+
 public class NoteTests {
-/*    @LocalServerPort
-    private Integer port; // this port is the RANDOM_PORT*/
+    @LocalServerPort
+    private Integer port; // this port is the RANDOM_PORT
 
     // initialize fields:
     private static WebDriver driver;
@@ -45,7 +46,7 @@ public class NoteTests {
     // before each test, signup and login to get to homepage:
     @BeforeEach
     public void beforeEach() {
-        baseURL = "http://localhost:8080" ;
+        baseURL = "http://localhost:" + port ;
 
         // navigate to /signup:
         driver.get(baseURL + "/signup");
@@ -65,22 +66,20 @@ public class NoteTests {
         // initialize homepage page:
         noteView = new NoteView(driver);
 
-        /** add a new note so that we can test for add/edit/delete at same time: */
+
         // simulate user to click on Notes tab:
         noteView.clickNoteTab();
     }
 
     /**
      *  TEST 2.1:
-     *  Write a test that creates a note, and verifies it is displayed.
-     *  Test if newly added note is displayed with same title and description in Home
      * */
     @Test
     public void addNewNote() {
         // simulate user to click "Add/Edit a Note" button to add new note:
         noteView.clickAddNoteButton();
         // fill in data to add a new note:
-        noteView.fillNoteData("Test Title", "Test Description");
+        noteView.fillNoteData("Hello World!", "Many many words of wisdom");
 
         // after successfully added new note, navigate to Result page:
         // initialize new Result page object:
@@ -92,14 +91,12 @@ public class NoteTests {
         noteView.clickNoteTab();
 
         // test if new note's title and description match:
-        assertEquals("Test Title", noteView.getNoteTitleText());
-        assertEquals("Test Description", noteView.getNoteDescriptionText());
+        assertEquals("Hello World!", noteView.getNoteTitleText());
+        assertEquals("Many many words of wisdom", noteView.getNoteDescriptionText());
     }
 
     /**
      * TEST 2.2:
-     * Write a test that edits an existing note
-     * and verifies that the changes are displayed.
      * */
     @Test
     public void editNote() {
@@ -125,8 +122,6 @@ public class NoteTests {
 
     /**
      * TEST 2.3:
-     * Write a test that deletes a note
-     * and verifies that the note is no longer displayed.
      * */
     @Test
     public void deleteNote() {

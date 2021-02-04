@@ -70,11 +70,6 @@ public class CredentialsView {
     }
 
 
-    /** define methods
-     * use JavascriptExecutor to execute Javascript through Selenium Webdriver
-     * .executeScript() to run javascript on selected window or current page
-     * Reference: https://www.guru99.com/execute-javascript-selenium-webdriver.html
-     * */
     // method to simulate user to click on Credentials tab:
     public void clickCredTab() {
         ((JavascriptExecutor) driver).executeScript("arguments[0].click();", this.credentialsTab);
@@ -110,9 +105,7 @@ public class CredentialsView {
 
     }
 
-    /** use .getAttribute("innerHTML") to get HTML source of the content of the element in Selenium
-     * Reference: https://www.browserstack.com/guide/get-html-source-of-web-element-in-selenium-webdriver
-     * */
+
     // verify that new credential's url is created:
     public String getUrlText() {
         return credentialUrlText.getAttribute("innerHTML");
@@ -130,9 +123,7 @@ public class CredentialsView {
     }
 
 
-    /** .getAttribute("value") will get the value of the attribute
-     * Reference: https://knowledge.udacity.com/questions/434707
-     * */
+
     // get unencrypted password:
     public String getUnencryptedPassword() {
         return this.credentialPassword.getAttribute("value");
