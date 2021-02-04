@@ -79,7 +79,7 @@ public class NoteTests {
         // simulate user to click "Add/Edit a Note" button to add new note:
         noteView.clickAddNoteButton();
         // fill in data to add a new note:
-        noteView.fillNoteData("Hello World!", "Many many words of wisdom");
+        noteView.fillNoteForm("Hello World!", "Many many words of wisdom");
 
         // after successfully added new note, navigate to Result page:
         // initialize new Result page object:
@@ -104,7 +104,7 @@ public class NoteTests {
         // simulate user to click on "Edit" button:
         noteView.clickEditButton();
         // simulate user to editing note with new data:
-        noteView.fillNoteData("New Title", "New Description");
+        noteView.fillNoteForm("New Title", "New Description");
 
         // after successfully added new note, navigate to Result page:
         // initialize new Result page object:

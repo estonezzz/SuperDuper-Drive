@@ -75,7 +75,7 @@ public class NoteView {
     }
 
     // method to fill data for note. Use both for Add and Edit Test:
-    public void fillNoteData(String title, String description) {
+    public void fillNoteForm(String title, String description) {
         // fill in data:
         ((JavascriptExecutor) driver).executeScript("arguments[0].value='" + title + "';", this.noteTitle);
         ((JavascriptExecutor) driver).executeScript("arguments[0].value='" + description + "';", this.noteDescription);
