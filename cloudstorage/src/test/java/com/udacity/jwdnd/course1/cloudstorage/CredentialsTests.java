@@ -94,7 +94,7 @@ public class CredentialsTests {
         credentialsView.clickAddCredBtn();
 
         // simulate user to add new data to create add credential:
-        credentialsView.fillCredentialData("amazon.com", "kebard1985", "54321");
+        credentialsView.fillCredentialForm("amazon.com", "kebard1985", "54321");
 
         // after successfully added new credential, navigate to Result page
         // initialize new Result page object:
@@ -137,10 +137,8 @@ public class CredentialsTests {
         // simulate user to click on "Edit" button:
         credentialsView.clickEditBtn();
 
-
-
         // simulate user to modify existing data to edit credential:
-        credentialsView.fillCredentialData("blabla.com", "keb", "12345");
+        credentialsView.fillCredentialForm("blabla.com", "keb", "12345");
 
         // after successfully added new credential, navigate to Result page
         // initialize new Result page object:
